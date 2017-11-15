@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using iTento.Views;
+using Xamarin.Forms;
 
 namespace iTento
 {
@@ -8,7 +9,7 @@ namespace iTento
         {
             InitializeComponent();
 
-            MainPage = new iTentoPage();
+            MainPage = new Home();
         }
 
         protected override void OnStart()
