@@ -10,15 +10,7 @@ namespace iTento.Views
         public Home()
         {
             InitializeComponent();
-        }
-
-        void First_Clicked(object sender, System.EventArgs e)
-        {
-            idFirst.Text = "X";
-        }
-        void Second_Clicked(object sender, System.EventArgs e)
-        {
-            idFirst.Text = "X";
+            this.BindingContext = new ViewModels.HomeViewModel();
         }
     }
 }
