@@ -11,7 +11,7 @@
                 <ColumnDefinition Width="3" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Label x:Name="id_truqueiroA" Text="{Binding TruqueiroA}" Grid.Column="0" 
+            <Label x:Name="TruqueiroA" Text="{Binding TruqueiroA, Mode=TwoWay}" Grid.Column="0" 
                 HorizontalOptions="FillAndExpand" 
                 VerticalTextAlignment="Center" 
                 HorizontalTextAlignment="Center" 
@@ -22,7 +22,7 @@
                 </Label.GestureRecognizers>
             </Label>
                 <BoxView Grid.Column="1" BackgroundColor="Black"/>
-            <Label x:Name="id_truqueiroB" Text="{Binding TruqueiroB}" Grid.Column="2" 
+            <Label x:Name="TruqueiroB" Text="{Binding TruqueiroB}" Grid.Column="2" 
                 HorizontalOptions="FillAndExpand" 
                 VerticalTextAlignment="Center" 
                 HorizontalTextAlignment="Center"
@@ -33,10 +33,14 @@
                 </Label.GestureRecognizers>
             </Label>
         </Grid>
+
+   <Label x:Name="teste" Text="{Binding Teste}" FontSize="30"
+                    TextColor="Black"/> 
             <StackLayout 
                 Orientation="Horizontal" 
                 HorizontalOptions="Center">
-                
+
+           
                 <Button Text="-" 
                     FontSize="30"
                     TextColor="Black"

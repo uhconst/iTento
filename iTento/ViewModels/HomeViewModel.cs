@@ -16,7 +16,7 @@ namespace iTento.ViewModels
             set
             {
                 truqueiroA = value;
-                this.Notify("id_truqueiroA");
+                Notify(nameof(TruqueiroA));
             }
         }
 
@@ -30,7 +30,7 @@ namespace iTento.ViewModels
             set
             {
                 truqueiroB = value;
-                this.Notify("id_truqueiroB");
+                Notify(nameof(TruqueiroB));
             }
         }
 
@@ -64,8 +64,12 @@ namespace iTento.ViewModels
             set;
         }
 
+        private readonly Services.IMessageService _messageService;
+
         public HomeViewModel()
         {
+            this._messageService = DependencyService.Get<Services.IMessageService>();
+
             this.TruqueiroA_Plus_Command = new Command(this.TruqueiroA_Plus);
             this.TruqueiroB_Plus_Command = new Command(this.TruqueiroB_Plus);
 
@@ -73,41 +77,65 @@ namespace iTento.ViewModels
             this.Reset_Command = new Command(this.Reset);
             this.TruqueiroB_Minus_Command = new Command(this.TruqueiroB_Minus);
 
-            this.TruqueiroA = "0";
-            this.TruqueiroB = "0";
+            this.TruqueiroA = ReadPrefs("TruqueiroA").ToString();
+            this.TruqueiroB = ReadPrefs("TruqueiroB").ToString();
         }
 
         private void TruqueiroA_Plus()
         {
-
+            this.TruqueiroA = AddOnePoint("TruqueiroA");
         }
 
         private void TruqueiroB_Plus()
         {
-            int z = Int32.Parse(this.TruqueiroB);
-
-            z++;
-
-            this.TruqueiroB = z.ToString();
+            this.TruqueiroB = AddOnePoint("TruqueiroB");
         }
 
         private void TruqueiroA_Minus()
         {
-            
+            this.TruqueiroA = RemoveOnePoint("TruqueiroA");
         }
 
-        public void Reset()
+        private void Reset()
         {
-            //int x = Int32.Parse(this.TruqueiroA);
-
-            //x++;
-
-            this.TruqueiroA = "BB";
+            
         }
 
         private void TruqueiroB_Minus()
         {
+            this.TruqueiroB = RemoveOnePoint("TruqueiroB");
+        }
 
+        private string AddOnePoint(string name)
+        {
+            int points = ReadPrefs(name);
+
+            if (points < 22)
+            {
+                points++;
+                WritePrefs(name, points);
+            }
+            else
+                ShowAlert();
+            
+            return points.ToString();
+        }
+
+        private string RemoveOnePoint(string name)
+        {
+            int points = ReadPrefs(name);
+
+            if (points > 0) 
+            {
+                points--;
+                WritePrefs(name, points);
+            }
+            return points.ToString();
+        }
+
+        private async void ShowAlert()
+        {
+            await this._messageService.ShowAsync("Cuidado com a bebida, truqueiro!", "Máximo de pontos que consegue chegar é 22!");
         }
     }
 }

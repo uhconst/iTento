@@ -9,6 +9,8 @@ namespace iTento
         {
             InitializeComponent();
 
+            DependencyService.Register<ViewModels.Services.IMessageService, Views.Services.MessageService>();
+
             MainPage = new Home();
         }
 
