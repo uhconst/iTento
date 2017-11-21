@@ -15,7 +15,6 @@ namespace iTento.ViewModels
             if (this.PropertyChanged != null)
             {
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-                Debug.WriteLine("propertyName: " + propertyName);
             }
         }
 

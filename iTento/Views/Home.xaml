@@ -17,7 +17,8 @@
                 HorizontalTextAlignment="Center" 
                 TextColor="Black"
                 Font="BradleyHandITCTT-Bold, 100">
-                <Label.GestureRecognizers>
+
+            <Label.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding TruqueiroA_Plus_Command}" />
                 </Label.GestureRecognizers>
             </Label>
