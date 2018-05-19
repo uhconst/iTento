@@ -16,7 +16,8 @@
                 VerticalTextAlignment="Center" 
                 HorizontalTextAlignment="Center" 
                 TextColor="Black"
-                Font="BradleyHandITCTT-Bold, 100">
+                FontSize="100"
+                FontFamily="{StaticResource ScoreFont}">
 
             <Label.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding TruqueiroA_Plus_Command}" />
@@ -28,7 +29,8 @@
                 VerticalTextAlignment="Center" 
                 HorizontalTextAlignment="Center"
                 TextColor="Black"
-                Font="BradleyHandITCTT-Bold, 100">
+                FontSize="100"
+                FontFamily="{StaticResource ScoreFont}">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding TruqueiroB_Plus_Command}" />
                 </Label.GestureRecognizers>
@@ -41,7 +43,6 @@
                 Orientation="Horizontal" 
                 HorizontalOptions="Center">
 
-           
                 <Button Text="-" 
                     FontSize="30"
                     TextColor="Black"
